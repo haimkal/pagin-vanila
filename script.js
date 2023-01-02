@@ -1,5 +1,5 @@
 
-// const fetch = require('node-fetch');
+
 
 (async () => {
 
@@ -11,8 +11,9 @@
     let noOfPagesArr = new Array(AMOUNT_OF_PAGES).fill(0).map((_, index) => index + 1)
     console.log('no: ', noOfPagesArr)
     const navigator = document.getElementById('navigator-list')
-    let leftArrow = document.getElementById('left-btn')
-    let rightArrow = document.getElementById('right-btn')
+    let leftArrow = document.getElementsByClassName('left-btn')
+    let rightArrow = document.getElementsByClassName('right-btn')
+
 
     for (let i = 0; i < noOfPagesArr.length; i++) {
         const pageNumLi = document.createElement('li')
@@ -25,11 +26,23 @@
         pageHyperlink.addEventListener('click', () => {
             // const page = event.target.dataset.page;
             // console.log(page);
+            pageHyperlink.addClass('active');
             currentPage = noOfPagesArr[i]
             fillWithPosts(currentPage);
 
         })
     }
+
+
+
+    // leftArrow.addEventListener('click', () => {
+    //     currentPage--
+    //     if (currentPage === 0) {
+    //         currentPage = noOfPagesArr.length
+    //         console.log(currentPage)
+    //     }
+
+
 
     leftArrow.addEventListener('click', () => {
         currentPage--
@@ -37,7 +50,6 @@
             currentPage = noOfPagesArr.length
             console.log(currentPage)
         }
-
 
         fillWithPosts(currentPage)
     })
@@ -47,10 +59,9 @@
         if (currentPage > noOfPagesArr.length) {
             currentPage = 1
         }
-
-
-        fillWithPosts(currentPage)
     })
+
+
 
     async function getPosts() {
         const res = await fetch('https://jsonplaceholder.typicode.com/posts', {

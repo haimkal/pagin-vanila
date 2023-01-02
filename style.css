@@ -40,7 +40,8 @@ h1 {
 }
 
 .container {
-  max-width: 100vh;
+  max-width: 100vw;
+  width: fit-content;
   margin: 0 auto;
   padding: 20px;
 }
@@ -79,4 +80,16 @@ li > a {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+
+button {
+  opacity: 0;
+}
+
+.shown {
+  opacity: 1;
+}
+
+.active {
+  background-color: yellow;
 }
