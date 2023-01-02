@@ -1,7 +1,6 @@
 
-// hide buttons when there no posts or only one page
-//which page i am
-window.addEventListener('load', () => {
+
+$(document).ready(function () {
     (async () => {
         let posts = []
         let currentPage = 1
@@ -83,8 +82,8 @@ window.addEventListener('load', () => {
         }
 
         const highlightCurrentPage = (p, i) => {
-            $('a')[p - 1].classList.remove('active')
-            $('a')[i - 1].classList.add('active')
+            $('a').eq(p - 1).removeClass('active')
+            $('a').eq(i - 1).addClass('active')
         }
         highlightCurrentPage(previousPage, currentPage)
 
